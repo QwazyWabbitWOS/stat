@@ -6,7 +6,7 @@
 #if defined (_WIN32) && defined (_MSC_VER)
 #include <Windows.h>
 #include <direct.h>
-#define getcwd _getcwd
+//#define getcwd _getcwd
 #else
 #include <unistd.h>
 #endif
@@ -38,6 +38,7 @@ int main(int argc, char* argv[])
 	struct stat sb;
 	char buf[1000];
 
+	ShowMacros();
 	printf("Current directory is %s\n", getcwd(buf, sizeof buf - 1));
 	printf("Did we find %s there? %s\n", folder, (stat(folder, &sb) == 0 && S_ISDIR(sb.st_mode)) ? "YES" : "NO");
 }
